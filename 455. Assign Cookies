@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int findContentChildren(vector<int>& g, vector<int>& s) {
+        int n = g.size();
+        int cookie_arr_size = s.size();
+        sort(g.begin(),g.end());
+        sort(s.begin(),s.end());
+        int l=0, r=0;// using 2 pointer approach
+        //be greedy give the child as min possible size of cookie in which he will satisfy his hunger
+        while(l<cookie_arr_size and r<n){// Make sure both pointers are in bounds
+            if(s[l]>=g[r])
+              r++;
+            l++;  
+        }
+        return r;
+    }
+};
